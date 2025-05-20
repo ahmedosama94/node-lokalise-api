@@ -1,3 +1,39 @@
+"use strict";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/main.ts
+var main_exports = {};
+__export(main_exports, {
+  ApiError: () => ApiError,
+  AuthError: () => AuthError,
+  LokaliseApi: () => LokaliseApi,
+  LokaliseApiOAuth: () => LokaliseApiOAuth,
+  LokaliseApiOta: () => LokaliseApiOta,
+  LokaliseAuth: () => LokaliseAuth,
+  LokaliseOtaBundles: () => LokaliseOtaBundles
+});
+module.exports = __toCommonJS(main_exports);
+
+// node_modules/tsup/assets/cjs_shims.js
+var getImportMetaUrl = () => typeof document === "undefined" ? new URL(`file:${__filename}`).href : document.currentScript && document.currentScript.src || new URL("main.js", document.baseURI).href;
+var importMetaUrl = /* @__PURE__ */ getImportMetaUrl();
+
 // src/models/base_model.ts
 var BaseModel = class {
   constructor(params) {
@@ -10,13 +46,13 @@ var Branch = class extends BaseModel {
 };
 
 // src/lokalise/pkg.ts
-import { readFile } from "node:fs/promises";
+var import_promises = require("fs/promises");
 function pkgPath() {
   return "../../package.json";
 }
 async function getVersion() {
   try {
-    const data = await readFile(new URL(pkgPath(), import.meta.url));
+    const data = await (0, import_promises.readFile)(new URL(pkgPath(), importMetaUrl));
     const pkg = JSON.parse(data.toString());
     return String(pkg.version);
   } catch {
@@ -2354,7 +2390,8 @@ var LokaliseAuth = class {
 // src/models/auth_error.ts
 var AuthError = class extends BaseModel {
 };
-export {
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
   ApiError,
   AuthError,
   LokaliseApi,
@@ -2362,5 +2399,5 @@ export {
   LokaliseApiOta,
   LokaliseAuth,
   LokaliseOtaBundles
-};
-//# sourceMappingURL=main.js.map
+});
+//# sourceMappingURL=main.cjs.map
